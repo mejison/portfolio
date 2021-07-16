@@ -1,37 +1,59 @@
 <template>
   <div class="app">
-    <div class="hero">
-      <div class="container">
-        <div class="name">
-          <h1 class="fname">{{ user.fname }}</h1>
-          <h1>{{ user.lname }}</h1>
-          <span class="job">{{ user.job }}</span>
-        </div>
-        <div class="info">
+    <div class="container">
+      <div class="run">
+        <div class="left">
           <div class="avatar">
-            <img :src="user.avatar" alt="avatar" />
+            <img src="" alt="" />
           </div>
-          <div class="contact">
-            <ul>
-              <li>
-                Phone:
-                <span>{{ user.phone }}</span>
-              </li>
-              <li>
-                Email:
-                <span>{{ user.email }}</span>
-              </li>
-              <li>
-                Address:
-                <span>Your Street Address</span>
-                <span>Here, Zip code</span>
-              </li>
-            </ul>
+          left
+        </div>
+        <div class="right">
+          <div class="name">
+            <h1>
+              <span>{{ me.fname }}</span> {{ me.lname }}
+            </h1>
+            <h2>{{ me.position }}</h2>
+          </div>
+          <div class="content">
+            <div class="about">
+              <h2>About me</h2>
+              <p>
+                It is a long established fact that a reader will be distracted
+                by the readable content of a page when looking at its layout.
+                The point of using Lorem Ipsum is that it has a more-or-less
+                normal distribution of letters, as opposed to using 'Content
+                here, content here', making it look like readable English.
+              </p>
+            </div>
+            <div class="work-experience">
+              <h2>Work experience</h2>
+              <div class="experiences">
+                <div
+                  class="experience"
+                  v-for="(experience, index) in experiences"
+                  :key="index"
+                >
+                  <div class="period">
+                    {{ experience.period }}
+                  </div>
+                  <div>
+                    <h3>{{ experience.job }}</h3>
+                    <h4>{{ experience.company }}</h4>
+                    {{ experience.description }}
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="software-skill">
+              <h2>
+                Software Skill
+              </h2>
+            </div>
           </div>
         </div>
       </div>
     </div>
-    <main>adsf</main>
   </div>
 </template>
 
@@ -41,120 +63,136 @@ export default {
 
   data() {
     return {
-      user: {
+      me: {
         fname: "Alex",
         lname: "Kovalchuk",
-        job: "Full-Stack Web Developer",
-        phone: "+380986604726",
-        email: "dev.mejison@gmail.com",
-        address: "",
-        avatar: "/avatar.jpeg",
+        position: "Full-Stack Developer"
       },
+      experiences: [
+        {
+          period: "2012-2014",
+          job: "job position here",
+          company: "Company Name/ California USA",
+          description:
+            "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout."
+        },
+        {
+          period: "2014-2017",
+          job: "job position here",
+          company: "Company Name/ California USA",
+          description:
+            "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout."
+        },
+        {
+          period: "2017-Present",
+          job: "job position here",
+          company: "Company Name/ California USA",
+          description:
+            "It is a long established fact that a reader will be distracted by the readable content of a page when looking at its layout."
+        }
+      ]
     };
-  },
+  }
 };
 </script>
 
 <style lang="scss">
-* {
-  box-sizing: border-box;
-  padding: 0;
-  margin: 0;
-}
-
-html,
-body,
 .app {
   height: 100%;
-  font-family: "Poppins", sans-serif;
-}
 
-.container {
-  width: 1440px;
-  margin: 0 auto;
-}
+  .run {
+    display: grid;
+    grid-template-columns: 400px 1fr;
+    height: 100%;
 
-.app {
-  .hero {
-    background-color: #171b26;
-    color: #fff;
-    height: 100vh;
+    .left {
+      background: #202026;
 
-    .container {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      grid-gap: 100px;
-      align-items: center;
-      height: 100%;
+      .avatar {
+        background: #2d2f42;
+        min-height: 450px;
+      }
     }
 
-    .name {
-      text-align: right;
+    .right {
+      background: #fff;
+      margin-top: 100px;
 
-      .fname {
-        display: inline;
-        padding: 0 50px;
+      .name {
+        background-color: #fecb00;
+        color: #2d2d2d;
+        width: 100%;
+        font-size: 2rem;
+        padding: 50px;
+        text-transform: uppercase;
         position: relative;
-        z-index: 2;
-        color: #171b26;
 
-        &::after {
-          content: "";
-          display: block;
-          position: absolute;
-          width: 100%;
-          height: 1000px;
-          z-index: -1;
-          left: 0;
-          right: 0;
-          bottom: 0;
-          background: #ffcc01;
+        h1 {
+          font-weight: 500;
+          letter-spacing: 5px;
+
+          span {
+            font-weight: 700;
+          }
+        }
+
+        h2 {
+          font-size: 1.5rem;
+          font-weight: 400;
+          letter-spacing: 10px;
         }
       }
 
-      h1 {
-        font-size: 80px;
-      }
+      .content {
+        padding: 50px;
 
-      span {
-        font-size: 48px;
-      }
-    }
+        .work-experience,
+        .about {
+          margin-bottom: 30px;
+        }
 
-    .job {
-      font-weight: 300;
-    }
-  }
+        .experiences {
+          display: flex;
+          flex-direction: column;
 
-  .info {
-    display: flex;
-    align-items: flex-end;
-    font-size: 18px;
+          .experience {
+            display: grid;
+            grid-gap: 15px;
+            grid-template-columns: 150px 1fr;
+            margin-bottom: 25px;
 
-    .avatar {
-      margin-right: 50px;
-      width: 250px;
-      height: 450px;
+            h3 {
+              text-transform: uppercase;
+              font-weight: 500;
+            }
 
-      img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
-        object-position: center center;
-      }
-    }
+            h4 {
+              font-size: 0.9rem;
+              margin-bottom: 15px;
+            }
+          }
+        }
 
-    .contact {
-      ul {
-        list-style: none;
+        p {
+          line-height: 1.3rem;
+        }
 
-        li {
-          margin-bottom: 15px;
+        h2 {
+          font-weight: 500;
+          position: relative;
+          margin-bottom: 25px;
+          text-transform: uppercase;
+          letter-spacing: 1.5px;
+          margin-bottom: 40px;
 
-          span {
-            color: #d7d7d7;
-            display: block;
-            font-weight: 300;
+          &:after {
+            content: "";
+            position: absolute;
+            left: 0;
+            right: 0;
+            bottom: -15px;
+            width: 100%;
+            border-bottom: 2px solid #000;
           }
         }
       }
