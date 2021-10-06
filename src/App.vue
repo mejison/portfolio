@@ -80,7 +80,7 @@ export default {
             Best regards,</br>
             Olexandr`,
       hire: "https://www.upwork.com/freelancers/~01ff6d9def9ac040c7",
-      isOpen: true
+      isOpen: false
     };
   },
 
