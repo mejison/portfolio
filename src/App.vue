@@ -36,6 +36,9 @@
             />
           </svg>
         </a>
+        <div class="avatar">
+          <img src="/avatar.png" alt="" />
+        </div>
       </div>
     </div>
     <div class="hero">
@@ -100,6 +103,14 @@ export default {
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
+
+  .avatar {
+    position: absolute;
+    right: 100px;
+    top: 50%;
+    transform: translateY(-50%);
+    filter: grayscale(100%);
+  }
 
   .header {
     padding-top: 30px;
