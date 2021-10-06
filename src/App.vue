@@ -36,9 +36,6 @@
             />
           </svg>
         </a>
-        <div class="avatar">
-          <img src="/avatar.png" alt="" />
-        </div>
       </div>
     </div>
     <div class="hero">
@@ -91,6 +88,10 @@ export default {
     onToggle() {
       this.isOpen = !this.isOpen;
     }
+  },
+
+  mounted() {
+    new window.WOW().init();
   }
 };
 </script>
@@ -99,18 +100,10 @@ export default {
 .page {
   height: 100%;
   width: 100%;
-  background-image: url("/bg.png");
+  background-image: url("/bg3.jpg");
   background-size: cover;
   background-position: center center;
   background-repeat: no-repeat;
-
-  .avatar {
-    position: absolute;
-    right: 100px;
-    top: 50%;
-    transform: translateY(-50%);
-    filter: grayscale(100%);
-  }
 
   .header {
     padding-top: 30px;
