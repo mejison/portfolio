@@ -22,7 +22,7 @@
 
           {{ email }}
         </a>
-        <a href="#" class="burger">
+        <a href="#" class="burger" @click.prevent="onToggle">
           <svg
             width="48"
             height="48"
@@ -49,16 +49,18 @@
       </div>
     </div>
     <socials />
+    <sidebar :is-open="isOpen" @close="isOpen = false" />
   </div>
 </template>
 
 <script>
-import { Socials } from "@/components";
+import { Socials, Sidebar } from "@/components";
 
 export default {
   name: "App",
 
   components: {
+    Sidebar,
     Socials
   },
 
@@ -77,11 +79,16 @@ export default {
             <br />
             Best regards,</br>
             Olexandr`,
-      hire: "https://www.upwork.com/freelancers/~01ff6d9def9ac040c7"
+      hire: "https://www.upwork.com/freelancers/~01ff6d9def9ac040c7",
+      isOpen: true
     };
   },
 
-  methods: {}
+  methods: {
+    onToggle() {
+      this.isOpen = !this.isOpen;
+    }
+  }
 };
 </script>
 
